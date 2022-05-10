@@ -1,0 +1,9 @@
+<br><br><br><br>
+
+<!-- 部分テンプレート _form.html.erb を呼び出す -->
+<%= render 'form', message: Message.new, value: '投稿' %>
+<hr>
+<div id="messages">
+  <!-- 各メッセージに対し，部分テンプレート _message.html.erb を呼び出す -->
+  <%= render @messages %>
+</div>
