@@ -1,8 +1,9 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: %i[destroy edit update]
+  before_action :search, only: %i[index]
 
   def index
-    @messages = Message.all
+    @messages = @q.result(distinct: true)
   end
 
   def new
@@ -24,6 +25,11 @@ class MessagesController < ApplicationController
     @message.update!(message_params)
   end
 
+  def search
+    # params[:q]のqには検索フォームに入力した値が入る
+   @q = Message.ransack(params[:q])
+  end
+
   private
 
   # Strong Parameters はサボらずに使っておくこととします
@@ -34,4 +40,5 @@ class MessagesController < ApplicationController
   def set_message
     @message = Message.find(params[:id])
   end
+
 end
