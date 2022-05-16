@@ -1,5 +1,7 @@
 <!-- idを追加 -->
 <p id="message-<%= message.id %>">
+
+  <%= message.title %>
   <%= message.content %>
   <!-- ********** 以下を追加 ********** -->
   <%= link_to '更新', edit_message_path(message), data: { remote: true } %>

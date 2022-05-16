@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
 
   # Strong Parameters はサボらずに使っておくこととします
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:title, :content)
   end
 
   def set_message
